@@ -7,5 +7,6 @@ public class CadastroDespesaUseCase {
     public void execute(Despesa despesa) {
         System.out.println("Categoria " + despesa.getCategoria());
         System.out.println("Email " + despesa.getEmail());
+        System.out.println(despesa);
     }
 }

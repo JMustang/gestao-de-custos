@@ -23,6 +23,12 @@ public class Despesa {
     private LocalDate data;
     private BigDecimal valor;
 
+    private String categoria;
+    private String email;
+
+    @CreatedDate
+    private LocalDate data_criacao;
+
     public UUID getId() {
         return id;
     }
@@ -79,9 +85,10 @@ public class Despesa {
         this.data_criacao = data_criacao;
     }
 
-    private String categoria;
-    private String email;
+    @Override
+    public String toString() {
+        return "Despesa [id=" + id + ", descricao=" + descricao + ", data=" + data + ", valor=" + valor + ", categoria="
+                + categoria + ", email=" + email + ", data_criacao=" + data_criacao + "]";
+    }
 
-    @CreatedDate
-    private LocalDate data_criacao;
 }
