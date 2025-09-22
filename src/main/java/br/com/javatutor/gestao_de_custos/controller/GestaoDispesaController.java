@@ -1,5 +1,6 @@
 package br.com.javatutor.gestao_de_custos.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +13,11 @@ import br.com.javatutor.gestao_de_custos.useCases.CadastroDespesaUseCase;
 @RestController
 public class GestaoDispesaController {
 
+    @Autowired
+    CadastroDespesaUseCase cadastroDespesaUseCase;
+
     @PostMapping("/create")
     public void create(@RequestBody Despesa despesa) {
-        CadastroDespesaUseCase cadastroDespesaUseCase = new CadastroDespesaUseCase();
         cadastroDespesaUseCase.execute(despesa);
     }
 }
