@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,7 +28,7 @@ public class Despesa {
     private String categoria;
     private String email;
 
-    @CreatedDate
+    @CreationTimestamp
     private LocalDate data_criacao;
 
     public UUID getId() {
