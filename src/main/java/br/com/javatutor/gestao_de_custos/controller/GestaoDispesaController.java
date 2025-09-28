@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.javatutor.gestao_de_custos.custom_messages.ErrorMessage;
 import br.com.javatutor.gestao_de_custos.entity.Despesa;
 import br.com.javatutor.gestao_de_custos.useCases.CadastroDespesaUseCase;
 
@@ -24,7 +25,8 @@ public class GestaoDispesaController {
             var result = cadastroDespesaUseCase.execute(despesa);
             return ResponseEntity.ok(result);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(400).body(e.getMessage());
+            var errorMessage = new ErrorMessage(e.getMessage(), "INVALID_PARAMS");
+            return ResponseEntity.status(400).body(errorMessage);
         }
 
     }
