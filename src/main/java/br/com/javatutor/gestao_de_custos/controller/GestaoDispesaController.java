@@ -1,6 +1,7 @@
 package br.com.javatutor.gestao_de_custos.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,14 @@ public class GestaoDispesaController {
     CadastroDespesaUseCase cadastroDespesaUseCase;
 
     @PostMapping("/create")
-    public void create(@RequestBody Despesa despesa) {
-        cadastroDespesaUseCase.execute(despesa);
+    public ResponseEntity<?> create(@RequestBody Despesa despesa) {
+
+        try {
+            var result = cadastroDespesaUseCase.execute(despesa);
+            return ResponseEntity.ok(result);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+
     }
 }
