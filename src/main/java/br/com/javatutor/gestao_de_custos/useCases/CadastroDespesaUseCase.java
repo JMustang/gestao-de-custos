@@ -12,7 +12,14 @@ public class CadastroDespesaUseCase {
     @Autowired
     private DespesaRepository despesaRepository;
 
-    public void execute(Despesa despesa) {
-        despesaRepository.save(despesa);
+    public Despesa execute(Despesa despesa) {
+
+        if (despesa.getCategoria() == null || despesa.getData() == null || despesa.getDescricao() == null
+                || despesa.getEmail() == null) {
+            throw new IllegalArgumentException("❌ Campos obrigatorios não podem ser nulos");
+        }
+
+        despesa = despesaRepository.save(despesa);
+        return despesa;
     }
 }
