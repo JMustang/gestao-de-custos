@@ -1,0 +1,28 @@
+package br.com.javatutor.gestao_de_custos.useCases;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.javatutor.gestao_de_custos.entity.Despesa;
+import br.com.javatutor.gestao_de_custos.repository.DespesaRepository;
+
+@Service
+public class BuscarDispesaUseCase {
+
+    @Autowired
+    private DespesaRepository despesaRepository;
+
+    public List<Despesa> execute(String email, LocalDate data) {
+
+        List<Despesa> despesas;
+        if (data != null) {
+            despesas = despesaRepository.findByEmailAndData(email, data);
+        } else {
+            despesas = despesaRepository.findByEmail(email);
+        }
+        return despesas;
+    }
+}
