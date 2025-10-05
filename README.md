@@ -38,6 +38,14 @@ Este projeto é uma API desenvolvida em Spring Boot para auxiliar na gestão de 
 4. **Acesse a aplicação**:  
    Por padrão, a API estará disponível em `http://localhost:8080`.
 
+## Endpoints
+
+### Performance de Despesas
+
+- `GET /gestao/performance`
+  - Lista todas as despesas cadastradas, sem paginação.
+  - Útil para análises de performance e integração com dashboards.
+
 ## Estrutura do Projeto
 
 - `src/main/java/br/com/javatutor/gestao_de_custos`: Código fonte principal da aplicação.
@@ -66,4 +74,4 @@ Este projeto está sob licença Apache 2.0.
 
 ---
 
-Desenvolvido por [Junior](https://github.com/JMustang).
+Desenvolvido por [JavaTutor](https://github.com/javatutor).
