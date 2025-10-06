@@ -56,7 +56,7 @@ Este projeto é uma API desenvolvida em Spring Boot para auxiliar na gestão de 
 
 O nome da aplicação pode ser alterado no arquivo [`application.properties`](src/main/resources/application.properties):
 
-```
+```vim
 spring.application.name=Gestao de Custos Pessoais
 ```
 
