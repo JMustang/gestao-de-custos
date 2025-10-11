@@ -5,8 +5,9 @@ Este projeto é uma API desenvolvida em Spring Boot para auxiliar na gestão de 
 ## Tecnologias Utilizadas
 
 - Java 17
-- Spring Boot 3.5.5
+- Spring Boot
 - Spring Data JPA
+- Spring Cache
 - H2 Database (banco de dados em memória para desenvolvimento)
 - Maven
 
@@ -38,13 +39,27 @@ Este projeto é uma API desenvolvida em Spring Boot para auxiliar na gestão de 
 4. **Acesse a aplicação**:  
    Por padrão, a API estará disponível em `http://localhost:8080`.
 
-## Endpoints
+## Endpoints de Performance
 
-### Performance de Despesas
+### Listar despesas sem paginação
 
-- `GET /gestao/performance`
-  - Lista todas as despesas cadastradas, sem paginação.
-  - Útil para análises de performance e integração com dashboards.
+- **GET** `/gestao/performance/sem-paginacao`
+- Retorna todas as despesas cadastradas.
+
+### Listar despesas com paginação
+
+- **GET** `/gestao/performance/com-paginacao?page=0&size=10`
+- Retorna despesas paginadas.
+
+### Listar despesas por e-mail com paginação
+
+- **GET** `/gestao/performance/com-paginacao/{email}?page=0&size=10`
+- Retorna despesas filtradas por e-mail, paginadas.
+
+### Listar despesas por e-mail com paginação e cache
+
+- **GET** `/gestao/performance/cache{email}?page=0&size=10`
+- Retorna despesas filtradas por e-mail, paginadas e com cache.
 
 ## Estrutura do Projeto
 
@@ -56,7 +71,7 @@ Este projeto é uma API desenvolvida em Spring Boot para auxiliar na gestão de 
 
 O nome da aplicação pode ser alterado no arquivo [`application.properties`](src/main/resources/application.properties):
 
-```vim
+```vi
 spring.application.name=Gestao de Custos Pessoais
 ```
 
@@ -74,4 +89,4 @@ Este projeto está sob licença Apache 2.0.
 
 ---
 
-Desenvolvido por [JavaTutor](https://github.com/javatutor).
+Desenvolvido por [JavaTutor](https://github.com/JMustang).
